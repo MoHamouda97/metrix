@@ -1,0 +1,76 @@
+<div id="stepsform" class="progressbar6">
+    <!-- progressbar -->
+    <ul id="progressbar">
+        <li class="active step-number" id="step1"><strong>Hierarchy info</strong></li>
+        <li id="step2" class="step-number"><strong>User defined</strong></li>
+        <li id="step3" class="step-number"><strong>Responsibilities</strong></li>
+        <li id="step4" class="step-number"><strong>Subordinates</strong></li>
+        <li id="step5" class="step-number"><strong>Linked object</strong></li>
+        <li id="step6" class="step-number"><strong>Linked KPI's</strong></li>
+    </ul>
+    <!-- fieldsets -->
+    <fieldset class="step-content" id="step1-content">
+        <app-hierarchy-info></app-hierarchy-info>
+        <button type="button" name="next" class="next action-button float-right ml-3 btn-width mr-0">
+            Next Step
+        </button>
+    </fieldset>
+    <fieldset class="step-content" id="step2-content">
+        <app-user-defined></app-user-defined>
+        <button type="button" name="previous" class="previous action-button-previous float-left ml-0 btn-width">
+            Previous
+        </button>
+        <button type="button" name="next" class="next action-button float-right ml-3 btn-width mr-0">
+            Next Step
+        </button>
+    </fieldset>
+    <fieldset class="step-content" id="step3-content">
+        <app-responsibilities></app-responsibilities>
+        <button type="button" name="previous" class="previous action-button-previous float-left ml-0 btn-width">
+            Previous
+        </button>
+        <button type="button" name="next" class="next action-button float-right ml-3 btn-width mr-0">
+            Next Step
+        </button>
+    </fieldset>
+    <fieldset class="step-content" id="step4-content">
+        <app-subordinates 
+            [subordinates]="(subordinates$ | async) || []"
+            [SUBORDINATES_LIST]="SUBORDINATES_LIST" 
+            (add)="addSubordinate($event)"></app-subordinates>
+        <button type="button" name="previous" class="previous action-button-previous float-left ml-0 btn-width">
+            Previous
+        </button>
+        <button type="button" name="next" class="next action-button float-right ml-3 btn-width mr-0">
+            Next Step
+        </button>
+    </fieldset>
+    <fieldset class="step-content" id="step5-content">
+        <app-link-objects></app-link-objects>
+        <button type="button" name="previous" class="previous action-button-previous float-left ml-0 btn-width">
+            Previous
+        </button>
+        <button type="button" name="next" class="next action-button float-right ml-3 btn-width mr-0">
+            Next Step
+        </button>
+    </fieldset>
+    <fieldset class="step-content" id="step6-content">
+        <app-link-api></app-link-api>
+        <button type="button" name="previous" class="previous action-button-previous float-left ml-0 btn-width">
+            Previous
+        </button>
+
+        <button type="button" class="btn icon-btn btn-secondary float-right ml-3 mt-2 btn-width" data-toggle="collapse" data-target="#advanceSearch" aria-expanded="true">
+            <img src="assets/images/rejected.svg">
+            Cancel
+        </button>
+        <button type="button" class="btn icon-btn advance-search float-right ml-3 mt-2 btn-width" data-toggle="collapse" data-target="#advanceSearch" aria-expanded="true">
+            <img src="assets/images/save-icon.svg">
+            Draft
+        </button>
+        <button type="button" id="save-btn" class="btn icon-btn search-btn mt-2 float-right btn-width">
+            <img src="assets/images/submit.svg" />
+            Submit
+        </button>
+    </fieldset>
+</div>

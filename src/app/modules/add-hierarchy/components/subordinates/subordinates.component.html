@@ -1,0 +1,147 @@
+<div class="row mb-2">
+    <div class="col-sm-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12 col-md-9">
+                        <h4 class="card-title">Subordinates</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <ul class="card-header-actions float-right">
+                            <li class="float-right ml-2">
+                                <a data-toggle="modal" data-target="#link-sub" class="header-actions">
+                                    <img src="assets/images/add.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <div class="table-main">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th width="10%"><span>ID</span></th>
+                                <th class="text-left" width="35%"><span>Name</span></th>
+                                <th class="text-left" width="25%"><span>Responsable</span></th>
+                                <th class="text-center" width="20%"><span>Subordinates</span></th>
+                                <th class="text-center" width="10%"><span>Actions</span></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="table-container scrollLeg">
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                                <tr *ngFor="let subordinate of subordinates">
+                                    <td width="10%"><span><i class="fa fa-unlock text-success"></i> {{subordinate.ID}}</span></td>
+                                    <td class="text-left" width="35%"><span class="table-row-title"><a href="kpi-details.html">{{subordinate.name}} </a></span></td>
+
+                                    <td class="text-left" width="25%">
+                                        <div class="md-avatar float-left" style="background-image:url({{subordinate.responsibleImage}})"></div><span class="pt-1 d-block">{{subordinate.responsibleName}}</span>
+                                    </td>
+                                    <td class="text-center" width="20%">
+                                        <h5 class="default-text"><span class="badge badge-secondary default-badge">{{subordinate.subordinates}}</span></h5>
+                                    </td>
+                                    <td width="10%">
+                                        <div class="dropdown d-inline-block single-card-actions">
+                                            <span class="actions-ddl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </span>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item text-danger" href="javascript:void(0)">Remove</a>
+                                            </div>
+                                        </div>
+                                    </td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="link-sub">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header pt-2 pb-2 pb-0">
+                <div class="row w-100">
+                    <div class="col-sm-12 col-md-4">
+                        <h4 class="modal-title mt-1">Subordinates</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                        <ul class="card-header-actions float-right">
+                            <li class="float-right ml-2 pt-1">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </li>
+                            <li class="float-right sm-w-100">
+                                <div class="input-group card-header-search">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="table-main">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th width="10%"><span>Select</span></th>
+                                <th width="10%"><span>ID</span></th>
+                                <th class="text-left" width="35%"><span>Name</span></th>
+                                <th class="text-left" width="25%"><span>Responsable</span></th>
+                                <th class="text-center" width="20%"><span>Subordinates</span></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="table-container scrollLeg">
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                                <tr *ngFor="let subordinate of SUBORDINATES_LIST; let i = index">
+                                    <td width="10%">
+                                        <div class="custom-control custom-switch">
+                                            <input 
+                                                type="checkbox" 
+                                                class="custom-control-input" 
+                                                id="switch{{subordinate.ID}}" 
+                                                name="example"
+                                                (change)="onSelect($event, subordinate)">
+                                            <label class="custom-control-label" for="switch{{subordinate.ID}}"></label>
+                                        </div>
+                                    </td>
+                                    <td width="10%"><span><i class="fa fa-unlock text-success"></i> {{subordinate.ID}}</span></td>
+                                    <td class="text-left" width="35%"><span class="table-row-title"><a href="kpi-details.html">{{subordinate.name}} </a></span></td>
+                                    <td class="text-left" width="25%">
+                                        <div class="md-avatar float-left" style="background-image:url({{subordinate.responsibleImage}})"></div><span class="pt-1 d-block">{{subordinate.responsibleName}}</span>
+                                    </td>
+                                    <td class="text-center" width="20%">
+                                        <h5 class="default-text"><span class="badge badge-secondary default-badge">{{subordinate.subordinates}}</span></h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn search-btn btn-width" data-dismiss="modal" (click)="add.emit(addedSubordinates)">Add</button>
+                <button type="button" class="btn btn-secondary btn-width" data-dismiss="modal">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>

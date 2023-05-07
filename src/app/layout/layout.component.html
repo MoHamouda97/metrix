@@ -1,0 +1,18 @@
+<metrix-loading-bar></metrix-loading-bar>
+<app-header></app-header>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-2 mb-3">
+            <app-profile></app-profile>
+
+            <app-menu></app-menu>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-10 mb-3">
+            <app-breadcrumb [pathes]="pathes"></app-breadcrumb>
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
