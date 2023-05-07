@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit, OnDestroy {
           tap((res: IResponse) => {
             if (res.code === 1) {
               window.sessionStorage.setItem('token', res.data.accessToken)
-              this.router.navigate(['app/form-builder']);
+              this.router.navigate(['app/process-list']);
             } 
           }),
           finalize(() => this.signInForm.enable())

@@ -15,7 +15,7 @@ export class LoginGuard implements CanActivate {
 
         if (!token) return true;
 
-        this.router.navigate([`/app/form-builder`]);
+        this.router.navigate([`/app/process-list`]);
 
         this.toastr.warning('You are already logged in!!')
 
