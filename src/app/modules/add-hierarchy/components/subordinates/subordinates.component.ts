@@ -21,4 +21,9 @@ export class SubordinatesComponent {
       this.addedSubordinates = this.addedSubordinates.filter((s: ISubordinates) => s.ID !== subordinate.ID)
     }
   }
+
+  addSubordinates() {
+    this.add.emit(this.addedSubordinates);
+    this.addedSubordinates = [];
+  }
 }
